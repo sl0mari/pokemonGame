@@ -1,5 +1,5 @@
-function checkDirection() {
-  angleMath();
+function checkDirection(animConfig) {
+  angleMath(animConfig);
   //switch row of spritesheet for proper direction
   if (angle > 180) {
     angle = angle - 360;
@@ -54,12 +54,12 @@ function atan2Normalized(x, y) {
   return degrees;
 }
 
-function angleMath() {
+function angleMath(animConfig) {
   //base movement off of offset character coordinates to center  head of character
   xD =
-    mouse.x - (player.positionX + animConfig[player.stateType].frameWidth / 2);
+    mouse.x - (player.positionX + animConfig.frameWidth / 2);
   yD =
-    mouse.y - (player.positionY + animConfig[player.stateType].frameHeight / 4);
+    mouse.y - (player.positionY + animConfig.frameHeight / 4);
   //get the angle of the mouse relative to the character
   angle = atan2Normalized(yD, xD);
   //get the length of the vector from character to mouse
@@ -76,11 +76,12 @@ let hypotenuse = 0;
 
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
-canvas.height = 800;
-canvas.width = 600;
+canvas.height = 832;
+canvas.width = 1024;
 ctx.imageSmoothingEnabled = false;
 
 let isShiftKeyPressed = false;
+let isCtrlKeyPressed = false;
 
 const mouse = {
   x: null,
@@ -94,38 +95,35 @@ let gameFrame = 0;
 const staggerFrames = 24;
 
 function moveCharacter(animationInfo) {
-  checkDirection();
+  checkDirection(animationInfo.config);
   stateCheck();
   let deltaX = xD / hypotenuse;
   let deltaY = yD / hypotenuse;
 
   // Check if the Shift key is held down before allowing movement
+  let sprint = 1;
   if (isShiftKeyPressed) {
+    if (isCtrlKeyPressed) sprint = 1.6; // Double speed when both Shift and Ctrl are held
     if (
       player.positionX + deltaX >= 0 &&
       player.positionX + animationInfo.config.frameWidth + deltaX <= canvas.width
     ) {
-      player.positionX += deltaX * player.moveSpeed;
+      player.positionX += deltaX * player.moveSpeed * sprint;
     }
     if (
       player.positionY + deltaY >= 0 &&
-      player.positionY + animationInfo.config.frameHeight + deltaY <=
-        canvas.height
+      player.positionY + animationInfo.config.frameHeight + deltaY <= canvas.height
     ) {
-      player.positionY += deltaY * player.moveSpeed;
+      player.positionY += deltaY * player.moveSpeed * sprint;
     }
   }
 }
-let idle =0;
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+let idle = 0;
+function playerAnimation() {
   const animationInfo = animationData[player.playerState];
-
-  // Update mouse position and calculate character state
-
-
   if (animationInfo) {
-
     const currentAnimationData = animationInfo.config;
     const currentState = player.playerState;
     const currentDirection = spriteDirections.indexOf(player.playerDirection);
@@ -137,8 +135,7 @@ function animate() {
     const directionY = animationInfo[player.playerDirection].loc[position].y;
 
     const frameX = currentAnimationData.frameWidth * position;
-
-
+    
     if (
       player.positionX > mouse.x + 25 ||
       player.positionY > mouse.y + 25 ||
@@ -147,14 +144,13 @@ function animate() {
     ) {
       player.playerState = "walk";
       moveCharacter(animationInfo);
-    } 
-    else if (idle) {
+    } else if (idle) {
       player.playerState = "idle";
       player.stateType = 7;
       idle++;
       console.log(idle);
     }
-    
+
     ctx.drawImage(
       animationInfo.config.shadowImage,
       frameX,
@@ -178,6 +174,17 @@ function animate() {
       animationInfo.config.frameHeight
     );
   }
+}
+
+function animate() {
+  const backgroundImage = bkgImages.bkgImage;
+  const topBackgroundImage = bkgImages.topBkgImage;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+  playerAnimation();
+  ctx.drawImage(topBackgroundImage, 0, 0, canvas.width, canvas.height);
 
   gameFrame++;
   requestAnimationFrame(animate);
@@ -201,6 +208,9 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "Shift") {
     isShiftKeyPressed = true;
   }
+  if (e.key === "Control") { 
+    isCtrlKeyPressed = true;
+  }
 });
 
 // Event listener for the Shift key release
@@ -208,7 +218,14 @@ window.addEventListener("keyup", (e) => {
   if (e.key === "Shift") {
     isShiftKeyPressed = false;
   }
+  if (e.key === "Control") { 
+    isCtrlKeyPressed = false;
+  }
 });
+
+
+
+
 
 
 canvas.addEventListener("mousemove", mouseMoveListener);
