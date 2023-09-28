@@ -1,3 +1,10 @@
+//create a linked list of inizilized pokemon that contains alll this information about each pokemon?
+//like what the fuck am i gonna do. write a 1000 lines of code for each animation inizilization and store all this information
+//IDK gotta rethink this whole deal...
+//lets start from scratch and work on the level creator. That way it's easy and will not change when we add new characters.
+//the level creator is easily the most contained and level headed part of this whole project.
+
+
 function loadImage(src) {
   const img = new Image();
   img.src = src;
