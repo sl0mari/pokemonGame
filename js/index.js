@@ -92,7 +92,17 @@ const mouse = {
 };
 
 let gameFrame = 0;
-const staggerFrames = 24;
+const staggerFrames = 10;
+
+function updateStaggerFrames() {
+  for (const config of animConfigPikachu) {
+    const staggerFrames = [];
+    for (let i = 0; i < config.frames; i++) {
+      staggerFrames.push(config.staggerFrames[i] || 1);
+    }
+    config.staggerFrames = staggerFrames;
+  }
+}
 
 function moveCharacter(animationInfo) {
   checkDirection(animationInfo.config);
@@ -122,6 +132,7 @@ function moveCharacter(animationInfo) {
 
 let idle = 0;
 function playerAnimation() {
+  updateStaggerFrames();
   const animationInfo = animationData[player.playerState];
   if (animationInfo) {
     const currentAnimationData = animationInfo.config;
@@ -177,14 +188,14 @@ function playerAnimation() {
 }
 
 function animate() {
-  const backgroundImage = bkgImages.bkgImage;
-  const topBackgroundImage = bkgImages.topBkgImage;
+//  const backgroundImage = bkgImages.bkgImage;
+//  const topBackgroundImage = bkgImages.topBkgImage;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+ // ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
   playerAnimation();
-  ctx.drawImage(topBackgroundImage, 0, 0, canvas.width, canvas.height);
+ // ctx.drawImage(topBackgroundImage, 0, 0, canvas.width, canvas.height);
 
   gameFrame++;
   requestAnimationFrame(animate);

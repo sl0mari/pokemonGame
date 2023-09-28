@@ -3,12 +3,6 @@ function loadImage(src) {
   img.src = src;
   return img;
 }
-
-const bkgImages = {
-  bkgImage: loadImage("./img/map/testmap_base.png"),
-  topBkgImage: loadImage("./img/map/testmap_top.png"),
-};
-
 const pickachuImages = {
   walkAnim: loadImage("./img/pokemonSprites/0025/Walk-Anim.png"),
   walkShadow: loadImage("./img/pokemonSprites/0025/Walk-Shadow.png"),
@@ -131,6 +125,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.walkAnim,
     shadowImage: pickachuImages.walkShadow,
+    staggerFrames: [8, 10, 8, 10],
   },
   {
     name: "attack",
@@ -139,6 +134,7 @@ const animConfigPikachu = [
     frameHeight: 80,
     playerImage: pickachuImages.attackAnim,
     shadowImage: pickachuImages.attackShadow,
+    staggerFrames: [2, 4, 1, 1, 1, 2, 2, 2, 2, 4],
   },
   {
     name: "quickStrike",
@@ -147,6 +143,7 @@ const animConfigPikachu = [
     frameHeight: 136,
     playerImage: pickachuImages.quickStrikeAnim,
     shadowImage: pickachuImages.quickStrikeShadow,
+    staggerFrames: [2, 4, 1, 1, 1, 2, 2, 2, 2, 2],
   },
   {
     name: "shoot",
@@ -155,6 +152,7 @@ const animConfigPikachu = [
     frameHeight: 56,
     playerImage: pickachuImages.shootAnim,
     shadowImage: pickachuImages.shootShadow,
+    staggerFrames: [1, 2, 6, 2, 2, 2, 2, 2, 2, 2, 2],
   },
   {
     name: "shock",
@@ -163,6 +161,7 @@ const animConfigPikachu = [
     frameHeight: 64,
     playerImage: pickachuImages.shockAnim,
     shadowImage: pickachuImages.shockShadow,
+    staggerFrames: [8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   },
   {
     name: "sleep",
@@ -171,6 +170,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.sleepAnim,
     shadowImage: pickachuImages.sleepShadow,
+    staggerFrames: [30, 35],
   },
   {
     name: "hurt",
@@ -179,6 +179,7 @@ const animConfigPikachu = [
     frameHeight: 64,
     playerImage: pickachuImages.hurtAnim,
     shadowImage: pickachuImages.hurtShadow,
+    staggerFrames: [2, 8],
   },
   {
     name: "idle",
@@ -187,6 +188,7 @@ const animConfigPikachu = [
     frameHeight: 56,
     playerImage: pickachuImages.idleAnim,
     shadowImage: pickachuImages.idleShadow,
+    staggerFrames: [40, 2, 3, 3, 3, 2],
   },
   {
     name: "swing",
@@ -195,6 +197,7 @@ const animConfigPikachu = [
     frameHeight: 96,
     playerImage: pickachuImages.swingAnim,
     shadowImage: pickachuImages.swingShadow,
+    staggerFrames: [2, 1, 2, 2, 3, 2, 2, 1, 1],
   },
   {
     name: "double",
@@ -203,6 +206,7 @@ const animConfigPikachu = [
     frameHeight: 64,
     playerImage: pickachuImages.doubleAnim,
     shadowImage: pickachuImages.doubleShadow,
+    staggerFrames: [2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 3, 2, 2, 2, 2, 2],
   },
   {
     name: "hop",
@@ -211,6 +215,7 @@ const animConfigPikachu = [
     frameHeight: 88,
     playerImage: pickachuImages.hopAnim,
     shadowImage: pickachuImages.hopShadow,
+    staggerFrames: [2, 1, 2, 3, 4, 4, 3, 2, 1, 2],
   },
   {
     name: "charge",
@@ -219,6 +224,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.chargeAnim,
     shadowImage: pickachuImages.chargeShadow,
+    staggerFrames: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
   },
   {
     name: "rotate",
@@ -227,6 +233,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.rotateAnim,
     shadowImage: pickachuImages.rotateShadow,
+    staggerFrames: [2, 2, 2, 2, 2, 2, 2, 2, 2],
   },
   {
     name: "eventSleep",
@@ -235,6 +242,7 @@ const animConfigPikachu = [
     frameHeight: 32,
     playerImage: pickachuImages.eventSleepAnim,
     shadowImage: pickachuImages.eventSleepShadow,
+    staggerFrames: [30, 35],
   },
   {
     name: "wake",
@@ -243,6 +251,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.wakeAnim,
     shadowImage: pickachuImages.wakeShadow,
+    staggerFrames: [8, 6, 4, 14, 10],
   },
   {
     name: "eat",
@@ -251,6 +260,7 @@ const animConfigPikachu = [
     frameHeight: 48,
     playerImage: pickachuImages.eatAnim,
     shadowImage: pickachuImages.eatShadow,
+    staggerFrames: [6, 8, 6, 8],
   },
   {
     name: "tumble",
@@ -259,6 +269,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.tumbleAnim,
     shadowImage: pickachuImages.tumbleShadow,
+    staggerFrames: [3, 3, 3, 3, 3, 3, 3, 3],
   },
   {
     name: "pose",
@@ -267,6 +278,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.poseAnim,
     shadowImage: pickachuImages.poseShadow,
+    staggerFrames: [12, 2, 8],
   },
   {
     name: "pull",
@@ -275,6 +287,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.pullAnim,
     shadowImage: pickachuImages.pullShadow,
+    staggerFrames: [10, 12, 10, 12, 10, 12, 10],
   },
   {
     name: "pain",
@@ -283,6 +296,7 @@ const animConfigPikachu = [
     frameHeight: 48,
     playerImage: pickachuImages.painAnim,
     shadowImage: pickachuImages.painShadow,
+    staggerFrames: [4, 1, 1, 1, 2, 1, 4, 2, 2, 2, 2, 2],
   },
   {
     name: "float",
@@ -291,6 +305,7 @@ const animConfigPikachu = [
     frameHeight: 32,
     playerImage: pickachuImages.floatAnim,
     shadowImage: pickachuImages.floatShadow,
+    staggerFrames: [9, 18, 9, 14],
   },
   {
     name: "deepBreath",
@@ -299,6 +314,7 @@ const animConfigPikachu = [
     frameHeight: 48,
     playerImage: pickachuImages.deepBreathAnim,
     shadowImage: pickachuImages.deepBreathShadow,
+    staggerFrames: [12, 6, 6, 6, 6, 6, 6, 10, 4],
   },
   {
     name: "sit",
@@ -307,6 +323,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.sitAnim,
     shadowImage: pickachuImages.sitShadow,
+    staggerFrames: [8, 8, 8],
   },
   {
     name: "lookUp",
@@ -315,6 +332,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.lookUpAnim,
     shadowImage: pickachuImages.lookUpShadow,
+    staggerFrames: [6, 6, 6],
   },
   {
     name: "sink",
@@ -323,6 +341,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.sinkAnim,
     shadowImage: pickachuImages.sinkShadow,
+    staggerFrames: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
   },
   {
     name: "trip",
@@ -331,6 +350,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.tripAnim,
     shadowImage: pickachuImages.tripShadow,
+    staggerFrames: [4, 6, 4, 4, 4],
   },
   {
     name: "laying",
@@ -339,6 +359,7 @@ const animConfigPikachu = [
     frameHeight: 32,
     playerImage: pickachuImages.layingAnim,
     shadowImage: pickachuImages.layingShadow,
+    staggerFrames: [12],
   },
   {
     name: "leapForth",
@@ -347,6 +368,7 @@ const animConfigPikachu = [
     frameHeight: 72,
     playerImage: pickachuImages.leapForthAnim,
     shadowImage: pickachuImages.leapForthShadow,
+    staggerFrames: [6, 1, 2, 2, 2],
   },
   {
     name: "cringe",
@@ -355,6 +377,7 @@ const animConfigPikachu = [
     frameHeight: 64,
     playerImage: pickachuImages.cringeAnim,
     shadowImage: pickachuImages.cringeShadow,
+    staggerFrames: [4],
   },
   {
     name: "lostBalance",
@@ -363,6 +386,7 @@ const animConfigPikachu = [
     frameHeight: 46,
     playerImage: pickachuImages.lostBalanceAnim,
     shadowImage: pickachuImages.lostBalanceShadow,
+    staggerFrames: [8, 8],
   },
   {
     name: "tumbleBack",
@@ -371,6 +395,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.tumbleBackAnim,
     shadowImage: pickachuImages.tumbleBackShadow,
+    staggerFrames: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
   },
   {
     name: "faint",
@@ -379,6 +404,7 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.faintAnim,
     shadowImage: pickachuImages.faintShadow,
+    staggerFrames: [8, 12, 4, 10],
   },
   {
     name: "hitGround",
@@ -387,15 +413,18 @@ const animConfigPikachu = [
     frameHeight: 40,
     playerImage: pickachuImages.hitGroundAnim,
     shadowImage: pickachuImages.hitGroundShadow,
+    staggerFrames: [4, 4, 4, 4, 4, 6, 4, 4],
   },
   // ... Repeat this for other animation configurations
 ];
 
-
 const animationData = {
   walk: { config: animConfigPikachu[0], animations: walkAnimationsPikachu },
   attack: { config: animConfigPikachu[1], animations: attackAnimationsPikachu },
-  quickStrike: { config: animConfigPikachu[2], animations: quickStrikeAnimationsPikachu },
+  quickStrike: {
+    config: animConfigPikachu[2],
+    animations: quickStrikeAnimationsPikachu,
+  },
   shoot: { config: animConfigPikachu[3], animations: shootAnimationsPikachu },
   shock: { config: animConfigPikachu[4], animations: shockAnimationsPikachu },
   sleep: { config: animConfigPikachu[5], animations: sleepAnimationsPikachu },
@@ -404,29 +433,63 @@ const animationData = {
   swing: { config: animConfigPikachu[8], animations: swingAnimationsPikachu },
   double: { config: animConfigPikachu[9], animations: doubleAnimationsPikachu },
   hop: { config: animConfigPikachu[10], animations: hopAnimationsPikachu },
-  charge: { config: animConfigPikachu[11], animations: chargeAnimationsPikachu },
-  rotate: { config: animConfigPikachu[12], animations: rotateAnimationsPikachu },
-  eventSleep: { config: animConfigPikachu[13], animations: eventSleepAnimationsPikachu },
+  charge: {
+    config: animConfigPikachu[11],
+    animations: chargeAnimationsPikachu,
+  },
+  rotate: {
+    config: animConfigPikachu[12],
+    animations: rotateAnimationsPikachu,
+  },
+  eventSleep: {
+    config: animConfigPikachu[13],
+    animations: eventSleepAnimationsPikachu,
+  },
   wake: { config: animConfigPikachu[14], animations: wakeAnimationsPikachu },
   eat: { config: animConfigPikachu[15], animations: eatAnimationsPikachu },
-  tumble: { config: animConfigPikachu[16], animations: tumbleAnimationsPikachu },
+  tumble: {
+    config: animConfigPikachu[16],
+    animations: tumbleAnimationsPikachu,
+  },
   pose: { config: animConfigPikachu[17], animations: poseAnimationsPikachu },
   pull: { config: animConfigPikachu[18], animations: pullAnimationsPikachu },
   pain: { config: animConfigPikachu[19], animations: painAnimationsPikachu },
   float: { config: animConfigPikachu[20], animations: floatAnimationsPikachu },
-  deepBreath: { config: animConfigPikachu[21], animations: deepBreathAnimationsPikachu },
+  deepBreath: {
+    config: animConfigPikachu[21],
+    animations: deepBreathAnimationsPikachu,
+  },
   sit: { config: animConfigPikachu[22], animations: sitAnimationsPikachu },
-  lookUp: { config: animConfigPikachu[23], animations: lookUpAnimationsPikachu },
+  lookUp: {
+    config: animConfigPikachu[23],
+    animations: lookUpAnimationsPikachu,
+  },
   sink: { config: animConfigPikachu[24], animations: sinkAnimationsPikachu },
   trip: { config: animConfigPikachu[25], animations: tripAnimationsPikachu },
-  laying: { config: animConfigPikachu[26], animations: layingAnimationsPikachu },
-  leapForth: { config: animConfigPikachu[27], animations: leapForthAnimationsPikachu },
-  cringe: { config: animConfigPikachu[28], animations: cringeAnimationsPikachu },
-  lostBalance: { config: animConfigPikachu[29], animations: lostBalanceAnimationsPikachu },
-  tumbleBack: { config: animConfigPikachu[30], animations: tumbleBackAnimationsPikachu },
+  laying: {
+    config: animConfigPikachu[26],
+    animations: layingAnimationsPikachu,
+  },
+  leapForth: {
+    config: animConfigPikachu[27],
+    animations: leapForthAnimationsPikachu,
+  },
+  cringe: {
+    config: animConfigPikachu[28],
+    animations: cringeAnimationsPikachu,
+  },
+  lostBalance: {
+    config: animConfigPikachu[29],
+    animations: lostBalanceAnimationsPikachu,
+  },
+  tumbleBack: {
+    config: animConfigPikachu[30],
+    animations: tumbleBackAnimationsPikachu,
+  },
   faint: { config: animConfigPikachu[31], animations: faintAnimationsPikachu },
-  hitGround: { config: animConfigPikachu[32], animations: hitGroundAnimationsPikachu },
+  hitGround: {
+    config: animConfigPikachu[32],
+    animations: hitGroundAnimationsPikachu,
+  },
   // Add more animations here if needed
 };
-
-
